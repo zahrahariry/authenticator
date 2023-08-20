@@ -10,6 +10,11 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(value = ObjectNotFoundException.class)
     public ResponseEntity<Object> throwObjectNotFoundException (ObjectNotFoundException objectNotFoundException){
-        return new ResponseEntity<>("An error has occurred  !!!", HttpStatus.I_AM_A_TEAPOT);
+        return new ResponseEntity<>("ObjectNotFoundException", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(value = ObjectCurrentlyIsExistsException.class)
+    public ResponseEntity<Object> throwObjectCurrentlyIsExistsException (ObjectCurrentlyIsExistsException objectCurrentlyIsExistsException){
+        return new ResponseEntity<>("ObjectCurrentlyIsExistsException", HttpStatus.BAD_REQUEST);
     }
 }
