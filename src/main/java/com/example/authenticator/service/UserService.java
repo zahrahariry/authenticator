@@ -1,5 +1,7 @@
 package com.example.authenticator.service;
 
+import com.example.authenticator.mapstruct.UserMapper;
+import com.example.authenticator.repository.User;
 import com.example.authenticator.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
+
+    @Autowired
+    UserMapper userMapper;
+
+    public User findUserBuUserId (Long id) {
+
+    }
 
 }

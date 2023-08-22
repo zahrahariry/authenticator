@@ -66,10 +66,11 @@ public class RolePermissionService {
         }
     }
 
-    public ResponseEntity updateRolePermission (Long rolePermissionId, RolePermissionModel rolePermissionModel) {
-        Optional<RolePermission> rolePermissionOpt = rolePermissionRepository.findRolePermissionById(rolePermissionId);
-        if (rolePermissionOpt.isPresent()) {
-            rolePermissionRepository.saveAndFlush(rolePermissionMapper.convertRolePermissionModelToRolePermissionEntity(rolePermissionModel));
+    public ResponseEntity deleteRolePermissionByRoleIdAndPermissionId (Long roleId, Long permissionId){
+        Optional<RolePermission> rolePermissionOpt = rolePermissionRepository.findRolePermissionByRoleIdAndPermissionId(roleId, permissionId);
+        if (rolePermissionOpt.isPresent()){
+            rolePermissionRepository.deleteRolePermissionByRoleIdAndPermissionId(roleId, permissionId);
+            return new ResponseEntity(HttpStatus.OK);
         }else {
             throw new ObjectNotFoundException();
         }
