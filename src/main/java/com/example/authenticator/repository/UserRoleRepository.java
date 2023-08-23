@@ -13,4 +13,6 @@ public interface UserRoleRepository extends CrudRepository<UserRole, Long>, JpaR
     List<UserRole> findUserRolesByUserId (Long userRoleId);
 
     List<UserRole> findUserRolesByRoleId (Long roleId);
+
+    Optional<UserRole> findUserRoleByUserIdAndRoleId (Long userId, Long roleId);
 }

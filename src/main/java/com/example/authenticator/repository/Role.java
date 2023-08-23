@@ -10,6 +10,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "ROLE_NAME")
+    @Column(name = "ROLE_NAME", unique = true)
     private String roleName;
 }

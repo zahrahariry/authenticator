@@ -76,5 +76,15 @@ public class RolePermissionService {
         }
     }
 
+    public ResponseEntity deleteRolePermissionById (Long id) {
+        RolePermission rolePermission = findRolePermissionByRolePermissionId(id);
+        if (rolePermission == null) {
+            throw new ObjectNotFoundException();
+        }else {
+            rolePermissionRepository.deleteById(id);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+    }
+
 
 }

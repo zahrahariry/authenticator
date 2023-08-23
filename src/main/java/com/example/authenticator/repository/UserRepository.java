@@ -15,4 +15,6 @@ public interface UserRepository extends CrudRepository<User, Long>, JpaRepositor
     Optional<User> findUserByUsername (String username);
 
     Optional<User> findUserByUsernameAndPassword (String username, String password);
+
+    void deleteUserByUsername (String username);
 }
