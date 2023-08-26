@@ -1,6 +1,5 @@
 package com.example.authenticator.controller;
 import com.example.authenticator.model.RolePermissionModel;
-import com.example.authenticator.repository.RolePermission;
 import com.example.authenticator.service.RolePermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
