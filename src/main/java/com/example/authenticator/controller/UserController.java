@@ -4,9 +4,7 @@ import com.example.authenticator.model.UserModel;
 import com.example.authenticator.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController(value = "/user")
 public class UserController {
@@ -19,23 +17,29 @@ public class UserController {
         return userService.getUserByUserId(id);
     }
 
-    public ResponseEntity getUserByUsername (String username) {
-
+    @GetMapping(value = "/get-user-by-username/{username}")
+    public ResponseEntity getUserByUsername (@PathVariable(name = "username") String username) {
+        return userService.getUserByUsername(username);
     }
 
-    public ResponseEntity getUserByUsernameAndPassword (String username, String password) {
-
+    @GetMapping(value = "/get-user-bu-username-and-password/{username}/{password}")
+    public ResponseEntity getUserByUsernameAndPassword (@PathVariable(name = "username") String username, @PathVariable(name = "password") String password) {
+        return userService.getUserByUsernameAndPassword(username, password);
     }
 
-    public ResponseEntity saveUser (UserModel userModel) {
-
+    @PostMapping(value = "/save-user")
+    public ResponseEntity saveUser (@RequestBody UserModel userModel) {
+        return userService.saveUser(userModel);
     }
 
-    public ResponseEntity deleteUser (String username) {
 
+    @DeleteMapping(value = "/delete-user/{username}")
+    public ResponseEntity deleteUser (@PathVariable(name = "username") String username) {
+        return userService.deleteUser(username);
     }
 
-    public ResponseEntity updateUser (Long id, UserModel userModel) {
-
+    @PutMapping(value = "/update-user/{id}")
+    public ResponseEntity updateUser (@PathVariable(name = "id") Long id, @RequestBody UserModel userModel) {
+        return userService.updateUser(id, userModel);
     }
 }
