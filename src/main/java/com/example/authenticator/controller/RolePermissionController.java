@@ -6,12 +6,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController(value = "/role-permission")
+@CrossOrigin
 public class RolePermissionController {
 
     @Autowired
     RolePermissionService rolePermissionService;
 
-    @GetMapping(value = "/role-permission-by-id/{id]")
+    @GetMapping(value = "/role-permission-by-id/{id}")
     public ResponseEntity getRolePermissionByRolePermissionId (@PathVariable(name = "id") Long id){
         return rolePermissionService.getRolePermissionByRolePermissionId(id);
     }
